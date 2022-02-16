@@ -1,10 +1,10 @@
 # L-CAM
 
-This repository hosts the code and data lists for our two learning-based eXplainable AI (XAI) methods called L-CAM-Fm and L-CAM-Img, for deep convolutional neural networks. Our methods receive as input an image and a class label and produce as output the image regions that the DCNN has looked at in order to infer this class. Both methods use an attention mechanism (AM),  trained  end-to-end  along  with the original (frozen) DCNN, to derive class activation maps (CAMs)from the last convolutional layer’s feature maps (FMs). During training, CAMs are applied to the FMs (L-CAM-Fm) or the input image(L-CAM-Img) forcing the AM to learn the image regions explaining the DCNN’s outcome. Two widely used evaluation metrics, Increase in Confidence (IC) and Average Drop (AD), are used for evaluation.
-- This repository contains the code for training L-CAM-Fm and L-CAM-Img, using VGG16 or ResNet-50 as the pre-trained backbone network along with the Attention Mechanism to derive visual explanations for these networks.
-- Instead of training, the user can also download the pre-trained models for L-CAM-Fm and L-CAM-Img(again using VGG16 or ResNet-50 as the backbone network[here](https://drive.google.com/file/d/1UAiW9S1wH7Aeve3Yfsy9Vd_9Z3eKSMQS/view?usp=sharing).
+This repository hosts the code and data lists for our two learning-based eXplainable AI (XAI) methods called L-CAM-Fm and L-CAM-Img, for deep convolutional neural networks (DCNN) image classifiers. Our methods receive as input an image and a class label and produce as output the image regions that the DCNN has looked at in order to infer this class. Both methods use an attention mechanism (AM),  trained  end-to-end  along  with the original (frozen) DCNN, to derive class activation maps (CAMs)from the last convolutional layer’s feature maps (FMs). During training, CAMs are applied to the FMs (L-CAM-Fm) or the input image(L-CAM-Img) forcing the AM to learn the image regions explaining the DCNN’s outcome. Two widely used evaluation metrics, Increase in Confidence (IC) and Average Drop (AD), are used for evaluation.
+- This repository contains the code for training L-CAM-Fm and L-CAM-Img, using VGG16 or ResNet-50 as the pre-trained backbone network along with the Attention Mechanism and our proposed(selected?!) loss function. There is code code to train the above networks with the conventional cross-entropy loss. 
+- Instead of training, the user can also download the pre-trained models for L-CAM-Fm and L-CAM-Img(again using VGG16 or ResNet-50 as the backbone network[here](https://drive.google.com/file/d/1UAiW9S1wH7Aeve3Yfsy9Vd_9Z3eKSMQS/view?usp=sharing). 
 - There is also code for evaluating our method according to two widely used evaluation metrics for DCNN explainability, Increase in Confidence (IC) and Average Drop (AD)
-- In [L-CAM/datalist/ILSVRC](https://github.com/gkartzoni/L-CAM/tree/main/datalist/ILSVRC) there are text files with annotations for training VGG16 and ResNet-50 (VGG16_train.txt, ResNet50_train.txt) and text files with annotations for 2000 randomly selected images to be used at the evaluation stage (VGG16_2000.txt, ResNet50_2000.txt) for the Aux-DCNN method.
+- In [L-CAM/datalist/ILSVRC](https://github.com/gkartzoni/L-CAM/tree/main/datalist/ILSVRC) there are text files with annotations for training VGG16 and ResNet-50 (VGG16_train.txt, ResNet50_train.txt) and text files with annotations for 2000 randomly selected images to be used at the evaluation stage (VGG16_2000.txt, ResNet50_2000.txt) for the L-CAM method.
 - The ImageNet1K dataset images should be downloaded by the user manually.
 - This project is implemented and tested in python 3.6 and PyTorch 1.9.
 
@@ -15,15 +15,14 @@ This repository hosts the code and data lists for our two learning-based eXplain
 Download [here](https://image-net.org/) the training and evaluation images for ImageNet1K dataset, then extract folders and sub-folders and place the extracted folders (ILSVRC2012_img_train, ILSVRC2012_img_val) in the dataset/ILSVRC2012_img_train and dataset/ILSVRC2012_img_val folders. The folder structure of the image files should look as below:
 ```
 dataset
-└── ILSVRC
-    └── train
+    └── ILSVRC2012_img_train
         └── n01440764
             ├── n01440764_10026.JPEG
             ├── n01440764_10027.JPEG
             └── ...
         └── n01443537
         └── ...
-    └── val
+    └── ILSVRC2012_img_val
         ├── ILSVRC2012_val_00000001.JPEG
         ├── ILSVRC2012_val_00000002.JPEG
         └── ...
@@ -104,7 +103,7 @@ The training process is based on code released in the [DANet](https://github.com
 
 If you find our Aux-DCNN code useful, please cite the following paper where our method is reported:
 
-I. Gkartzonika, N. Gkalelis, V. Mezaris, "Learning visual explanations for DCNN-based image classifiers using an auxiliary deep network", under review.
+I. Gkartzonika, N. Gkalelis, V. Mezaris, "Learning visual explanations for DCNN-based image classifiers using an attention mechanism", under review.
 
 
 
