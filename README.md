@@ -31,7 +31,7 @@ dataset
 ## Install
 - Clone this repository
 ~~~
-git clone https://github.com/gkartzoni/L-CAM
+git clone https://github.com/bmezaris/L-CAM
 ~~~
 - Go to the locally saved repository path:
 ~~~
@@ -44,15 +44,25 @@ mkdir snapshots
 
 ## Training
 
-- To train from scratch VGG16 or ResNet-50, run for the VGG16 backbone:
+- To train from scratch VGG16 or ResNet-50, run for the VGG16 backbone and the selected loss function:
 ~~~
 cd scripts
 sh VGG16_train.sh 
+~~~
+**OR**, for the VGG16 backbone and cross-entropy loss:
+~~~
+cd scripts
+sh VGG16_train_CE.sh 
 ~~~
 **OR**, for the ResNet-50 backbone:
 ~~~
 cd scripts
 sh ResNet50_train.sh
+~~~
+**OR**, for the ResNet-50 backbone and cross-entropy loss:
+~~~
+cd scripts
+sh VGG16_train_CE.sh 
 ~~~
 Before running any of the .sh files, set the img_dir parameter inside the .sh file. The produced model will be saved in the snapshots folder. 
 
