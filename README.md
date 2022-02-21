@@ -64,7 +64,7 @@ sh ResNet50_train.sh
 cd scripts
 sh ResNet50_train_CE.sh 
 ~~~
-Before running any of the .sh files, set the img_dir parameter inside the .sh file. The produced model will be saved in the snapshots folder. 
+Before running any of the .sh files, set the img_dir, snapshot_dir and arch parameters inside the .sh file. The produced model will be saved in the snapshots folder. 
 
 ## Evaluation
 - To evaluate the model, download the pretrained models that are available in this [GoogleDrive](https://drive.google.com/drive/folders/19Lyfqn7BQqEPTjvA40CJQQwJ8IU6KfI_?uspuspuspuspuspuspuspuspusp=sharing), and place the downloaded folders (VGG16_L_CAM_Img, VGG16_L_CAM_Fm, VGG16_7x7_L_CAM_Img, ResNet50_L_CAM_Fm, ResNet50_L_CAM_Img) in the snapshots folder; otherwise, use your own trained model that is placed in the snapshots folder.
@@ -80,7 +80,7 @@ sh VGG16_AD_IC.sh
 cd scripts
 sh ResNet50_AD_IC.sh
 ~~~
-Before running any of the .sh files, again set the img_dir parameter inside the .sh file.
+Before running any of the .sh files, again set the img_dir, snapshot_dir and arch parameters inside the .sh file.
 
 ## Parameters
 During the training and evaluation stages the above parameters can be specified.
@@ -106,7 +106,7 @@ CUDA_VISIBLE_DEVICES=0 python ResNet50_aux_ResNet18_AD_IC.py \
 --arch=ResNet50_L_CAM_Fm \
 --img_dir='/ssd/imagenet-1k/ILSVRC2012_img_val' \
 ~~~
-Most of the parameters are specified in .py files (in the L_CAM_VGG16 and L_CAM_ResNet50 folders). We use relative paths so that the paths (train_list, test_list, snapshot_dir) are specified relatively to the project path (/L-CAM) in the .py files. The only path that must be specified externally is arch(from models' folder) and img_dir, as in the example. If the images are saved in the dataset folder, set --img_dir=path2datasetFolder/ILSVRC2012_img_train for the training stage and --img_dir=path2datasetFolder/ILSVRC2012_img_val for the evaluation stage inside the .sh files.
+Most of the parameters are specified in .py files (in the L_CAM_VGG16 and L_CAM_ResNet50 folders). We use relative paths so that the paths (train_list, test_list) are specified relatively to the project path (/L-CAM) in the .py files. The only paths that must be specified externally is arch(from models' folder), snapshot_dir and img_dir, as in the example. If the images are saved in the dataset folder, set --img_dir=path2datasetFolder/ILSVRC2012_img_train for the training stage and --img_dir=path2datasetFolder/ILSVRC2012_img_val for the evaluation stage inside the .sh files. Same for snapshot_dir and arch paramenters.
 
 # Acknowledgement
 The training process is based on code released in the [DANet](https://github.com/xuehaolan/DANet) repository.
