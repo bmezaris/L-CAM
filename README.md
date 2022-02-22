@@ -9,7 +9,7 @@ This repository hosts the code and data lists for our two learning-based eXplain
 - This project is implemented and tested in python 3.6 and PyTorch 1.9.
 
 ## Visual examples (and comparison) of results 
-![alt text](https://github.com/bmezaris/L-CAM/blob/main/superimposed.png)
+![alt text](https://github.com/bmezaris/L-CAM/blob/main/images/superimposed.png)
 
 ## Data preparation
 Download [here](https://image-net.org/) the training and evaluation images for ImageNet1K dataset, then extract folders and sub-folders and place the extracted folders (ILSVRC2012_img_train, ILSVRC2012_img_val) in the dataset/ILSVRC2012_img_train and dataset/ILSVRC2012_img_val folders. The folder structure of the image files should look as below:
