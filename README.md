@@ -1,9 +1,9 @@
 # L-CAM
 
-This repository hosts the code and data lists for our two learning-based eXplainable AI (XAI) methods called L-CAM-Fm and L-CAM-Img, for deep convolutional neural networks (DCNN) image classifiers. Our methods receive as input an image and a class label and produce as output the image regions that the DCNN has looked at in order to infer this class. Both methods use an attention mechanism (AM),  trained  end-to-end  along  with the original (frozen) DCNN, to derive class activation maps (CAMs)from the last convolutional layer’s feature maps (FMs). During training, CAMs are applied to the FMs (L-CAM-Fm) or the input image(L-CAM-Img) forcing the AM to learn the image regions explaining the DCNN’s outcome. Two widely used evaluation metrics, Increase in Confidence (IC) and Average Drop (AD), are used for evaluation.
+This repository hosts the code and data lists for our two learning-based eXplainable AI (XAI) methods called L-CAM-Fm and L-CAM-Img, for deep convolutional neural networks (DCNN) image classifiers. Our methods receive as input an image and a class label and produce as output the image regions that the DCNN has looked at in order to infer this class. Both methods use an attention mechanism (AM),  trained  end-to-end  along  with the original (frozen) DCNN, to derive class activation maps (CAMs) commonly from the last convolutional layer’s feature maps (FMs). During training, CAMs are applied to the FMs (L-CAM-Fm) or the input image(L-CAM-Img) forcing the AM to learn the image regions explaining the DCNN’s outcome. Two widely used evaluation metrics, Increase in Confidence (IC) and Average Drop (AD), are used for evaluation.
 - This repository contains the code for training L-CAM-Fm and L-CAM-Img, using VGG16 or ResNet-50 as the pre-trained backbone network along with the Attention Mechanism and our selected loss function. There is also code to train the above networks with the conventional cross-entropy loss. The models are named as following:
-First the name of the backbone(ResNet50 or VGG16) and after the method's name(L-CAM-Fm or L-CAM-Img). If the model uses the cross-entropy loss(not our selected loss function) there is also an A character  at the end of the model. e.g.  ResNet50_L_CAM_ImgA.py There is also the variation with VGG16 backbone and L-CAM-Img method with AM's input the 7×7 FMs(after the last max pooling layer of VGG-16), not the last convolutional layer as in all the others models.  
-- Instead of training, the user can also download the pre-trained models for L-CAM-Fm and L-CAM-Img(again using VGG16 or ResNet-50 as the backbone network along with the Attention Mechanism and our selected loss function [here](https://drive.google.com/drive/folders/1QiwB3iEobEPnSB9NRSsmDaUAuBMiPdz2?usp=sharing). The pre-trained models are named as their model name(as explained in the previous paragraph). 
+First the name of the backbone(ResNet50 or VGG16) and after the method's name(L-CAM-Fm or L-CAM-Img). If the model uses the cross-entropy loss(not our selected loss function) there is also an A character  at the end of the model, e.g. ResNet50_L_CAM_ImgA.py. There is also a variation with VGG16 backbone and L-CAM-Img method with AM's input the 7×7 FMs(after the last max pooling layer of VGG-16), in contrast with all the others models that use the last convolutional layer. This model is named VGG16_7x7_L_CAM_Img.py.  
+- Instead of training, the user can also download the pre-trained models for L-CAM-Fm and L-CAM-Img(again using VGG16 or ResNet-50 as the backbone network along with the Attention Mechanism and our selected loss function [here](https://drive.google.com/drive/folders/1QiwB3iEobEPnSB9NRSsmDaUAuBMiPdz2?usp=sharing). The pre-trained models are named as its model name(as explained in the previous paragraph). 
 - There is also code for evaluating our method according to two widely used evaluation metrics for DCNN explainability, Increase in Confidence (IC) and Average Drop (AD)
 - In [L-CAM/datalist/ILSVRC](https://github.com/gkartzoni/L-CAM/tree/main/datalist/ILSVRC) there are text files with annotations for training VGG16 and ResNet-50 (VGG16_train.txt, ResNet50_train.txt) and text files with annotations for 2000 randomly selected images to be used at the evaluation stage (VGG16_2000.txt, ResNet50_2000.txt) for the L-CAM method.
 - Also, there is the code to evaluate the methods that are used for comparison with L-CAM-Fm and L-CAM-Img.
@@ -66,7 +66,7 @@ sh ResNet50_train.sh
 cd scripts
 sh ResNet50_train_CE.sh 
 ~~~
-Before running any of the .sh files, set the img_dir, snapshot_dir and arch parameters inside the .sh file. For the *_CE.sh files only models with the A character at the end must be selected otherwise models without A at the end must be selected. The produced model will be saved in the snapshots folder. 
+Before running any of the .sh files, set the img_dir, snapshot_dir and arch parameters inside the .sh file. For the *_CE.sh files the arch parameter must be set only with model names with the A character at the end must, for all the other .sh files models without A at the end must be selected. The produced model will be saved in the snapshots folder. 
 
 ## Evaluation of L-CAM-Fm and L-CAM-Img
 - To evaluate the model, download the pretrained models that are available in this [GoogleDrive](https://drive.google.com/drive/folders/1QiwB3iEobEPnSB9NRSsmDaUAuBMiPdz2?usp=sharing), and place the downloaded folders (VGG16_L_CAM_Img, VGG16_L_CAM_Fm, VGG16_7x7_L_CAM_Img, ResNet50_L_CAM_Fm, ResNet50_L_CAM_Img) in the snapshots folder; otherwise, use your own trained model that is placed in the snapshots folder.
@@ -90,10 +90,10 @@ Before running any of the .sh files, again set the img_dir, snapshot_dir and arc
 cd scripts
 sh Inference_OtherMethods.sh 
 ~~~
-Before running any of the .sh files, first take the code for Grad-Cam, Grad-Cam++, Score-CAM AND RISE  [ScoreCAM](https://github.com/yiskw713/ScoreCAM/blob/master/cam.py) repository and [RISE](https://github.com/eclique/RISE) repository  and save it to */L-CAM/utils. Than select the method that you want to evaluate e.g. For ResNet backbone and RISE method select ResNet_rise.py from */L-CAM/Inference_OtherMethods folder and set it in Inference_OtherMethods.sh file. Also, set the img_dir parameters inside the .sh file.
+Before running  the .sh file, first take the code for Grad-Cam, Grad-Cam++, Score-CAM AND RISE from [ScoreCAM](https://github.com/yiskw713/ScoreCAM/blob/master/cam.py) repository and [RISE](https://github.com/eclique/RISE) repository  and save it to */L-CAM/utils/cam.py. Than select from */L-CAM/Inference_OtherMethod the file with the method that you want to evaluate e.g. For ResNet backbone and RISE method select ResNet_rise.py from */L-CAM/Inference_OtherMethods folder and set it in the Inference_OtherMethods.sh file. Also, set the img_dir parameters inside the .sh file.
 For example:
 ~~~
-CUDA_VISIBLE_DEVICES=0 python VGG16_scorecam.py \
+CUDA_VISIBLE_DEVICES=0 python ResNet_rise.py \
 --img_dir='/ssd/imagenet-1k/ILSVRC2012_img_val' \
 ~~~
 
@@ -120,7 +120,7 @@ CUDA_VISIBLE_DEVICES=0 python Evaluation_L_CAM_VGG16.py \
 --arch=VGG16_L_CAM_Fm \
 --img_dir='/ssd/imagenet-1k/ILSVRC2012_img_val' \
 ~~~
-We use relative for train_list and test_list so they are specified relatively to the project path (/L-CAM) in the .py files. The paths that must be specified externally is arch(from models' folder), snapshot_dir and img_dir, as in the example. If the images are saved in the dataset folder, set --img_dir=path2datasetFolder/ILSVRC2012_img_train for the training stage and --img_dir=path2datasetFolder/ILSVRC2012_img_val for the evaluation stage inside the .sh files. Same for snapshot_dir and arch paramenters.
+We use relative paths for train_list and test_list so they are specified relative to the project path (/L-CAM) in the .py files. The paths that must be specified externally are arch(from models' folder), snapshot_dir and img_dir, as in the example. If the images are saved in the dataset folder, set --img_dir=path2datasetFolder/ILSVRC2012_img_train for the training stage and --img_dir=path2datasetFolder/ILSVRC2012_img_val for the evaluation stage inside the .sh files. Same for snapshot_dir and arch parameters.
 
 # Acknowledgement
 The training process is based on code released in the [DANet](https://github.com/xuehaolan/DANet) repository.
