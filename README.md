@@ -56,7 +56,7 @@ sh VGG16_train.sh
 cd scripts
 sh VGG16_train_CE.sh 
 ~~~
-**OR**, for the ResNet-50 backbone:
+**OR**, for the ResNet-50 backbone and the selected loss function:
 ~~~
 cd scripts
 sh ResNet50_train.sh
