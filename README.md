@@ -1,11 +1,11 @@
 # L-CAM
 
 This repository hosts the code and data lists for our two learning-based eXplainable AI (XAI) methods called L-CAM-Fm and L-CAM-Img, for deep convolutional neural networks (DCNN) image classifiers. Our methods receive as input an image and a class label and produce as output the image regions that the DCNN has looked at in order to infer this class. Both methods use an attention mechanism (AM),  trained  end-to-end  along  with the original (frozen) DCNN, to derive class activation maps (CAMs) commonly from the last convolutional layer’s feature maps (FMs). During training, CAMs are applied to the FMs (L-CAM-Fm) or the input image(L-CAM-Img) forcing the AM to learn the image regions explaining the DCNN’s outcome. Two widely used evaluation metrics, Increase in Confidence (IC) and Average Drop (AD), are used for evaluation.
-- This repository contains the code for training L-CAM-Fm and L-CAM-Img, using VGG16 or ResNet-50 as the pre-trained backbone network along with the Attention Mechanism and our selected loss function. There is also code to train the above networks with the conventional cross-entropy loss. The models are named as following:
-First the name of the backbone(ResNet50 or VGG16) and after the method's name(L-CAM-Fm or L-CAM-Img). If the model uses the cross-entropy loss(not our selected loss function) there is also an A character  at the end of the model, e.g. ResNet50_L_CAM_ImgA.py. There is also a variation with VGG16 backbone and L-CAM-Img method with AM's input the 7×7 FMs(after the last max pooling layer of VGG-16), in contrast with all the others models that use the last convolutional layer. This model is named VGG16_7x7_L_CAM_Img.py.  
-- Instead of training, the user can also download the pre-trained models for L-CAM-Fm and L-CAM-Img(again using VGG16 or ResNet-50 as the backbone network along with the Attention Mechanism and our selected loss function [here](https://drive.google.com/drive/folders/1QiwB3iEobEPnSB9NRSsmDaUAuBMiPdz2?usp=sharing). The pre-trained models are named as its model name(as explained in the previous paragraph). 
+- This repository contains the code for training L-CAM-Fm and L-CAM-Img, using VGG-16 or ResNet-50 as the pre-trained backbone network along with the Attention Mechanism and our selected loss function. There is also code to train the above networks with the conventional cross-entropy loss. The models are named as following:
+First the name of the backbone(ResNet50 or VGG-16) and after the method's name(L-CAM-Fm or L-CAM-Img). If the model uses the cross-entropy loss(not our selected loss function) there is also an A character  at the end of the model, e.g. ResNet50_L_CAM_ImgA.py. There is also a variation with VGG-16 backbone and L-CAM-Img method with AM's input the 7×7 FMs(after the last max pooling layer of VGG-16), in contrast with all the others models that use the last convolutional layer. This model is named VGG16_7x7_L_CAM_Img.py.  
+- Instead of training, the user can also download the pre-trained models for L-CAM-Fm and L-CAM-Img(again using VGG-16 or ResNet-50 as the backbone network along with the Attention Mechanism and our selected loss function [here](https://drive.google.com/drive/folders/1QiwB3iEobEPnSB9NRSsmDaUAuBMiPdz2?usp=sharing). The pre-trained models are named as its model name(as explained in the previous paragraph). 
 - There is also code for evaluating our method according to two widely used evaluation metrics for DCNN explainability, Increase in Confidence (IC) and Average Drop (AD)
-- In [L-CAM/datalist/ILSVRC](https://github.com/gkartzoni/L-CAM/tree/main/datalist/ILSVRC) there are text files with annotations for training VGG16 and ResNet-50 (VGG16_train.txt, ResNet50_train.txt) and text files with annotations for 2000 randomly selected images to be used at the evaluation stage (VGG16_2000.txt, ResNet50_2000.txt) for the L-CAM method.
+- In [L-CAM/datalist/ILSVRC](https://github.com/gkartzoni/L-CAM/tree/main/datalist/ILSVRC) there are text files with annotations for training VGG-16 and ResNet-50 (VGG-16_train.txt, ResNet50_train.txt) and text files with annotations for 2000 randomly selected images to be used at the evaluation stage (VGG16_2000.txt, ResNet50_2000.txt) for the L-CAM method.
 - Also, there is the code to evaluate the methods that are used for comparison with L-CAM-Fm and L-CAM-Img.
 - The ImageNet1K dataset images should be downloaded by the user manually.
 - This project is implemented and tested in python 3.6 and PyTorch 1.9.
@@ -46,12 +46,12 @@ mkdir snapshots
 
 ## Training
 
-- To train from scratch VGG16 or ResNet-50, run for the VGG16 backbone and the selected loss function:
+- To train from scratch VGG-16 or ResNet-50, run for the VGG-16 backbone and the selected loss function:
 ~~~
 cd scripts
 sh VGG16_train.sh 
 ~~~
-**OR**, for the VGG16 backbone and cross-entropy loss:
+**OR**, for the VGG-16 backbone and cross-entropy loss:
 ~~~
 cd scripts
 sh VGG16_train_CE.sh 
@@ -71,7 +71,7 @@ Before running any of the .sh files, set the img_dir, snapshot_dir and arch para
 ## Evaluation of L-CAM-Fm and L-CAM-Img
 - To evaluate the model, download the pretrained models that are available in this [GoogleDrive](https://drive.google.com/drive/folders/1QiwB3iEobEPnSB9NRSsmDaUAuBMiPdz2?usp=sharing), and place the downloaded folders (VGG16_L_CAM_Img, VGG16_L_CAM_Fm, VGG16_7x7_L_CAM_Img, ResNet50_L_CAM_Fm, ResNet50_L_CAM_Img) in the snapshots folder; otherwise, use your own trained model that is placed in the snapshots folder.
 
-- Run the commands below to calculate Increase in Confidence (IC) and Average Drop (AD), if using the VGG16 backbone:
+- Run the commands below to calculate Increase in Confidence (IC) and Average Drop (AD), if using the VGG-16 backbone:
 ~~~
 cd scripts
 sh VGG16_AD_IC.sh 
