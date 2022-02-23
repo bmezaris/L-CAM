@@ -111,7 +111,7 @@ We use relative for train_list and test_list so they are specified relatively to
 # Acknowledgement
 The training process is based on code released in the [DANet](https://github.com/xuehaolan/DANet) repository.
 
-The methods that are used for comparison with L-CAM-Fm and L-CAM-Img is taken from [THIS](https://github.com/yiskw713/ScoreCAM/blob/master/cam.py) repository, except form rise that is taken from [RISE](https://github.com/eclique/RISE) repository.
+The methods that are used for comparison with L-CAM-Fm and L-CAM-Img is taken from [ScoreCAM](https://github.com/yiskw713/ScoreCAM/blob/master/cam.py) repository, except form rise that is taken from [RISE](https://github.com/eclique/RISE) repository.
 
 If you find our L-CAM code useful, please cite the following paper where our method is reported:
 
