@@ -6,7 +6,7 @@ First the name of the backbone(ResNet50 or VGG-16) and after the method's name(L
 - Instead of training, the user can also download the pre-trained models for L-CAM-Fm and L-CAM-Img(again using VGG-16 or ResNet-50 as the backbone network along with the Attention Mechanism and our selected loss function [here](https://drive.google.com/drive/folders/1QiwB3iEobEPnSB9NRSsmDaUAuBMiPdz2?usp=sharing). The pre-trained models are named as the models files(as explained in the previous paragraph). 
 - There is also code for evaluating our method according to two widely used evaluation metrics for DCNN explainability, Increase in Confidence (IC) and Average Drop (AD).
 - Furthermore, there is the code to evaluate the methods that are used for comparison with L-CAM-Fm and L-CAM-Img.
-- In [L-CAM/datalist/ILSVRC](https://github.com/gkartzoni/L-CAM/tree/main/datalist/ILSVRC) there are text files with annotations for training VGG-16 and ResNet-50 (VGG-16_train.txt, ResNet50_train.txt) and text files with annotations for 2000 randomly selected images to be used at the evaluation stage (VGG16_2000.txt, ResNet50_2000.txt) for the L-CAM method.
+- In [L-CAM/datalist/ILSVRC](https://github.com/gkartzoni/L-CAM/tree/main/datalist/ILSVRC) there are text files with annotations for training VGG-16 and ResNet-50 (VGG-16_train.txt, ResNet50_train.txt) and text files with annotations for 2000 randomly selected images to be used at the evaluation stage (Evaluation_2000.txt) for the L-CAM methods.
 - The ImageNet1K dataset images should be downloaded by the user manually.
 - This project is implemented and tested in python 3.6 and PyTorch 1.9.
 
