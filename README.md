@@ -6,6 +6,7 @@ First the name of the backbone(ResNet50 or VGG16) and after the method's name(L-
 - Instead of training, the user can also download the pre-trained models for L-CAM-Fm and L-CAM-Img(again using VGG16 or ResNet-50 as the backbone network along with the Attention Mechanism and our selected loss function [here](https://drive.google.com/drive/folders/1QiwB3iEobEPnSB9NRSsmDaUAuBMiPdz2?usp=sharing). The pre-trained models are named as their model name(as explained in the previous paragraph). 
 - There is also code for evaluating our method according to two widely used evaluation metrics for DCNN explainability, Increase in Confidence (IC) and Average Drop (AD)
 - In [L-CAM/datalist/ILSVRC](https://github.com/gkartzoni/L-CAM/tree/main/datalist/ILSVRC) there are text files with annotations for training VGG16 and ResNet-50 (VGG16_train.txt, ResNet50_train.txt) and text files with annotations for 2000 randomly selected images to be used at the evaluation stage (VGG16_2000.txt, ResNet50_2000.txt) for the L-CAM method.
+- Also, there is the code to evaluate the methods that are used for comparison with L-CAM-Fm and L-CAM-Img.
 - The ImageNet1K dataset images should be downloaded by the user manually.
 - This project is implemented and tested in python 3.6 and PyTorch 1.9.
 
@@ -67,7 +68,7 @@ sh ResNet50_train_CE.sh
 ~~~
 Before running any of the .sh files, set the img_dir, snapshot_dir and arch parameters inside the .sh file. For the *_CE.sh files only models with the A character at the end must be selected otherwise models without A at the end must be selected. The produced model will be saved in the snapshots folder. 
 
-## Evaluation
+## Evaluation of L-CAM-Fm and L-CAM-Img
 - To evaluate the model, download the pretrained models that are available in this [GoogleDrive](https://drive.google.com/drive/folders/1QiwB3iEobEPnSB9NRSsmDaUAuBMiPdz2?usp=sharing), and place the downloaded folders (VGG16_L_CAM_Img, VGG16_L_CAM_Fm, VGG16_7x7_L_CAM_Img, ResNet50_L_CAM_Fm, ResNet50_L_CAM_Img) in the snapshots folder; otherwise, use your own trained model that is placed in the snapshots folder.
 
 - Run the commands below to calculate Increase in Confidence (IC) and Average Drop (AD), if using the VGG16 backbone:
@@ -82,6 +83,19 @@ cd scripts
 sh ResNet50_AD_IC.sh
 ~~~
 Before running any of the .sh files, again set the img_dir, snapshot_dir and arch parameters inside the .sh file.
+
+## Evaluation of the other methods
+- To evaluate the methods that are used for comparison with L-CAM-Fm and L-CAM-Img. Run the commands below to calculate Increase in Confidence (IC) and Average Drop (AD):
+~~~
+cd scripts
+sh Inference_OtherMethods.sh 
+~~~
+Before running any of the .sh files, first take the code for Grad-Cam, Grad-Cam++, Score-CAM AND RISE  [ScoreCAM](https://github.com/yiskw713/ScoreCAM/blob/master/cam.py) repository and [RISE](https://github.com/eclique/RISE) repository  and save it to */L-CAM/utils. Than select the method that you want to evaluate e.g. For ResNet backbone and RISE method select ResNet_rise.py from */L-CAM/Inference_OtherMethods folder and set it in Inference_OtherMethods.sh file. Also, set the img_dir parameters inside the .sh file.
+For example:
+~~~
+CUDA_VISIBLE_DEVICES=0 python VGG16_scorecam.py \
+--img_dir='/ssd/imagenet-1k/ILSVRC2012_img_val' \
+~~~
 
 ## Parameters
 During the training and evaluation stages the above parameters can be specified.
