@@ -66,7 +66,7 @@ sh ResNet50_train.sh
 cd scripts
 sh ResNet50_train_CE.sh 
 ~~~
-Before running any of the .sh files, set the img_dir, snapshot_dir and arch parameters inside the .sh file. For the *_CE.sh files the arch parameter must be set only with model names with the A character at the end must, for all the other .sh files models without A at the end must be selected. The produced model will be saved in the snapshots folder. 
+Before running any of the .sh files, set the img_dir, snapshot_dir and arch parameters inside the .sh file. For the *_CE.sh files the arch parameter must be set only with model file's names(*/L-CAM/models) with the A character at the end, for all the other .sh files the arch parameter must be set with file's names(*/L-CAM/models) without the A character at the end. The produced model will be saved in the snapshots folder. 
 
 ## Evaluation of L-CAM-Fm and L-CAM-Img
 - To evaluate the model, download the pretrained models that are available in this [GoogleDrive](https://drive.google.com/drive/folders/1QiwB3iEobEPnSB9NRSsmDaUAuBMiPdz2?usp=sharing), and place the downloaded folders (VGG16_L_CAM_Img, VGG16_L_CAM_Fm, VGG16_7x7_L_CAM_Img, ResNet50_L_CAM_Fm, ResNet50_L_CAM_Img) in the snapshots folder; otherwise, use your own trained model that is placed in the snapshots folder.
@@ -90,7 +90,7 @@ Before running any of the .sh files, again set the img_dir, snapshot_dir and arc
 cd scripts
 sh Inference_OtherMethods.sh 
 ~~~
-Before running  the .sh file, first take the code for Grad-Cam, Grad-Cam++, Score-CAM and RISE from [ScoreCAM](https://github.com/yiskw713/ScoreCAM/blob/master/cam.py) repository and [RISE](https://github.com/eclique/RISE) repository  and save it to */L-CAM/utils/cam.py. Than select from */L-CAM/Inference_OtherMethod the file with the method that you want to evaluate e.g. For ResNet backbone and RISE method select ResNet_rise.py from */L-CAM/Inference_OtherMethods folder and set it in the Inference_OtherMethods.sh file. Also, set the img_dir parameters inside the .sh file.
+Before running  the .sh file, first take the code for Grad-Cam, Grad-Cam++, Score-CAM and RISE from [ScoreCAM](https://github.com/yiskw713/ScoreCAM/blob/master/cam.py) repository and [RISE](https://github.com/eclique/RISE) repository  and save it to */L-CAM/utils/cam.py file. Than select from */L-CAM/Inference_OtherMethod the file with the method that you want to evaluate e.g. For ResNet-50 backbone and RISE method select ResNet50_rise.py from */L-CAM/Inference_OtherMethods folder/ and set it in the Inference_OtherMethods.sh file. Also, set the img_dir parameters inside the .sh file.
 For example:
 ~~~
 CUDA_VISIBLE_DEVICES=0 python ResNet_rise.py \
