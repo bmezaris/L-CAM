@@ -65,7 +65,7 @@ sh ResNet50_train.sh
 cd scripts
 sh ResNet50_train_CE.sh 
 ~~~
-Before running any of the .sh files, set the img_dir, snapshot_dir and arch parameters inside the .sh file. The produced model will be saved in the snapshots folder. 
+Before running any of the .sh files, set the img_dir, snapshot_dir and arch parameters inside the .sh file. For the *_CE.sh files only models with the A character at the end must be selected otherwise models without A at the end must be selected. The produced model will be saved in the snapshots folder. 
 
 ## Evaluation
 - To evaluate the model, download the pretrained models that are available in this [GoogleDrive](https://drive.google.com/drive/folders/1QiwB3iEobEPnSB9NRSsmDaUAuBMiPdz2?usp=sharing), and place the downloaded folders (VGG16_L_CAM_Img, VGG16_L_CAM_Fm, VGG16_7x7_L_CAM_Img, ResNet50_L_CAM_Fm, ResNet50_L_CAM_Img) in the snapshots folder; otherwise, use your own trained model that is placed in the snapshots folder.
@@ -110,6 +110,8 @@ We use relative for train_list and test_list so they are specified relatively to
 
 # Acknowledgement
 The training process is based on code released in the [DANet](https://github.com/xuehaolan/DANet) repository.
+
+The methods that are used for comparison with L-CAM-Fm and L-CAM-Img is taken from [THIS](https://github.com/yiskw713/ScoreCAM/blob/master/cam.py) repository, except form rise that is taken from [RISE](https://github.com/eclique/RISE) repository.
 
 If you find our L-CAM code useful, please cite the following paper where our method is reported:
 
