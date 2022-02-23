@@ -2,7 +2,7 @@
 
 This repository hosts the code and data lists for our two learning-based eXplainable AI (XAI) methods called L-CAM-Fm and L-CAM-Img, for deep convolutional neural networks (DCNN) image classifiers. Our methods receive as input an image and a class label and produce as output the image regions that the DCNN has looked at in order to infer this class. Both methods use an attention mechanism (AM),  trained  end-to-end  along  with the original (frozen) DCNN, to derive class activation maps (CAMs)from the last convolutional layer’s feature maps (FMs). During training, CAMs are applied to the FMs (L-CAM-Fm) or the input image(L-CAM-Img) forcing the AM to learn the image regions explaining the DCNN’s outcome. Two widely used evaluation metrics, Increase in Confidence (IC) and Average Drop (AD), are used for evaluation.
 - This repository contains the code for training L-CAM-Fm and L-CAM-Img, using VGG16 or ResNet-50 as the pre-trained backbone network along with the Attention Mechanism and our selected loss function. There is also code to train the above networks with the conventional cross-entropy loss. The models are named as following:
-First the name of the backbone(ResNet50 or VGG16) and after the method's name(L-CAM-Fm or L-CAM-Img). If the model uses the Cross-Entropy loss(not our selected loss function) there is also an A character  at the end of the model. e.g.  ResNet50_L_CAM_ImgA.py There is also the variation of VGG16 and L-CAM-Img where they are used the 7×7 FMs(after the last max pooling layer of VGG-16), not the last convolutional layer as in all the others models.  
+First the name of the backbone(ResNet50 or VGG16) and after the method's name(L-CAM-Fm or L-CAM-Img). If the model uses the cross-entropy loss(not our selected loss function) there is also an A character  at the end of the model. e.g.  ResNet50_L_CAM_ImgA.py There is also the variation with VGG16 backbone and L-CAM-Img method with AM's input the 7×7 FMs(after the last max pooling layer of VGG-16), not the last convolutional layer as in all the others models.  
 - Instead of training, the user can also download the pre-trained models for L-CAM-Fm and L-CAM-Img(again using VGG16 or ResNet-50 as the backbone network along with the Attention Mechanism and our selected loss function [here](https://drive.google.com/drive/folders/1QiwB3iEobEPnSB9NRSsmDaUAuBMiPdz2?usp=sharing). The pre-trained models are named as their model name(as explained in the previous paragraph). 
 - There is also code for evaluating our method according to two widely used evaluation metrics for DCNN explainability, Increase in Confidence (IC) and Average Drop (AD)
 - In [L-CAM/datalist/ILSVRC](https://github.com/gkartzoni/L-CAM/tree/main/datalist/ILSVRC) there are text files with annotations for training VGG16 and ResNet-50 (VGG16_train.txt, ResNet50_train.txt) and text files with annotations for 2000 randomly selected images to be used at the evaluation stage (VGG16_2000.txt, ResNet50_2000.txt) for the L-CAM method.
@@ -68,7 +68,7 @@ sh ResNet50_train_CE.sh
 Before running any of the .sh files, set the img_dir, snapshot_dir and arch parameters inside the .sh file. The produced model will be saved in the snapshots folder. 
 
 ## Evaluation
-- To evaluate the model, download the pretrained models that are available in this [GoogleDrive](https://drive.google.com/drive/folders/19Lyfqn7BQqEPTjvA40CJQQwJ8IU6KfI_?uspuspuspuspuspuspuspuspusp=sharing), and place the downloaded folders (VGG16_L_CAM_Img, VGG16_L_CAM_Fm, VGG16_7x7_L_CAM_Img, ResNet50_L_CAM_Fm, ResNet50_L_CAM_Img) in the snapshots folder; otherwise, use your own trained model that is placed in the snapshots folder.
+- To evaluate the model, download the pretrained models that are available in this [GoogleDrive](https://drive.google.com/drive/folders/1QiwB3iEobEPnSB9NRSsmDaUAuBMiPdz2?usp=sharing), and place the downloaded folders (VGG16_L_CAM_Img, VGG16_L_CAM_Fm, VGG16_7x7_L_CAM_Img, ResNet50_L_CAM_Fm, ResNet50_L_CAM_Img) in the snapshots folder; otherwise, use your own trained model that is placed in the snapshots folder.
 
 - Run the commands below to calculate Increase in Confidence (IC) and Average Drop (AD), if using the VGG16 backbone:
 ~~~
@@ -100,14 +100,13 @@ Parameter name | Description | Type |Default Value
 `--epoch` | Number of epochs used in training process. | int| EPOCH |
 `--snapshot_dir` | Directory where the trained models are stored. | str| Snapshot_dir |
 
-
 The above parameters can be changed in the .sh files. For example:
 ~~~
-CUDA_VISIBLE_DEVICES=0 python ResNet50_aux_ResNet18_AD_IC.py \
---arch=ResNet50_L_CAM_Fm \
+CUDA_VISIBLE_DEVICES=0 python Evaluation_L_CAM_VGG16.py \
+--arch=VGG16_L_CAM_Fm \
 --img_dir='/ssd/imagenet-1k/ILSVRC2012_img_val' \
 ~~~
-Most of the parameters are specified in .py files (in the L_CAM_VGG16 and L_CAM_ResNet50 folders). We use relative paths so that the paths (train_list, test_list) are specified relatively to the project path (/L-CAM) in the .py files. The only paths that must be specified externally is arch(from models' folder), snapshot_dir and img_dir, as in the example. If the images are saved in the dataset folder, set --img_dir=path2datasetFolder/ILSVRC2012_img_train for the training stage and --img_dir=path2datasetFolder/ILSVRC2012_img_val for the evaluation stage inside the .sh files. Same for snapshot_dir and arch paramenters.
+We use relative for train_list and test_list so they are specified relatively to the project path (/L-CAM) in the .py files. The paths that must be specified externally is arch(from models' folder), snapshot_dir and img_dir, as in the example. If the images are saved in the dataset folder, set --img_dir=path2datasetFolder/ILSVRC2012_img_train for the training stage and --img_dir=path2datasetFolder/ILSVRC2012_img_val for the evaluation stage inside the .sh files. Same for snapshot_dir and arch paramenters.
 
 # Acknowledgement
 The training process is based on code released in the [DANet](https://github.com/xuehaolan/DANet) repository.
