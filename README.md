@@ -120,12 +120,12 @@ CUDA_VISIBLE_DEVICES=0 python Evaluation_L_CAM_VGG16.py \
 --arch=VGG16_L_CAM_Fm \
 --img_dir='/ssd/imagenet-1k/ILSVRC2012_img_val' \
 ~~~
-We use relative paths for train_list and test_list so they are specified relative to the project path (/L-CAM) in the .py files. The paths that must be specified externally are arch(from models' folder), snapshot_dir and img_dir, as in the example. If the images are saved in the dataset folder, set --img_dir=path2datasetFolder/ILSVRC2012_img_train for the training stage and --img_dir=path2datasetFolder/ILSVRC2012_img_val for the evaluation stage inside the .sh files. Same for snapshot_dir and arch parameters.
+We use relative paths for train_list and test_list so they are specified relative to the project path (/L-CAM) in the .py files. The paths that must be specified externally are arch(from */L-CAM/models folder), snapshot_dir and img_dir, as in the example.
 
 # Acknowledgement
 The training process is based on code released in the [DANet](https://github.com/xuehaolan/DANet) repository.
 
-The methods that are used for comparison with L-CAM-Fm and L-CAM-Img is taken from [ScoreCAM](https://github.com/yiskw713/ScoreCAM/blob/master/cam.py) repository, except form rise that is taken from [RISE](https://github.com/eclique/RISE) repository.
+The code for the methods that are used for comparison with L-CAM-Fm and L-CAM-Img is taken from [ScoreCAM](https://github.com/yiskw713/ScoreCAM/blob/master/cam.py) repository, with only one exception the code for the RISE method that is taken from [RISE](https://github.com/eclique/RISE) repository.
 
 If you find our L-CAM code useful, please cite the following paper where our method is reported:
 
