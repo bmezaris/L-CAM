@@ -122,14 +122,42 @@ CUDA_VISIBLE_DEVICES=0 python Evaluation_L_CAM_VGG16.py \
 ~~~
 We use relative paths for train_list and test_list so they are specified relative to the project path (/L-CAM) in the .py files. The paths that must be specified externally are arch(from */L-CAM/models folder), snapshot_dir and img_dir, as in the example.
 
-# Acknowledgement
+## Citation
+<div align="justify">
+    
+If you find our work, code or pretrained models, useful in your work, please cite the following publication:
+
+I. Gkartzonika, N. Gkalelis, V. Mezaris, "Learning visual explanations for DCNN-based image classifiers using an attention mechanism", 2022, under review.
+</div>
+
+BibTeX:
+
+```
+@INPROCEEDINGS{9666088,
+    author    = {Gkartzonika, Ioanna and Gkalelis, Nikolaos and Mezaris, Vasileios},
+    title     = {Learning visual explanations for DCNN-based image classifiers using an attention mechanism},
+    booktitle = {under review},
+    month     = {},
+    year      = {2022},
+    pages     = {}
+}
+```
+
+## License
+<div align="justify">
+    
+Copyright (c) 2022, Ioanna Gkartzonika, Nikolaos Gkalelis, Vasileios Mezaris / CERTH-ITI. All rights reserved. This code is provided for academic, non-commercial use only. Redistribution and use in source and binary forms, with or without modification, are permitted for academic non-commercial use provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation provided with the distribution.
+
+This software is provided by the authors "as is" and any express or implied warranties, including, but not limited to, the implied warranties of merchantability and fitness for a particular purpose are disclaimed. In no event shall the authors be liable for any direct, indirect, incidental, special, exemplary, or consequential damages (including, but not limited to, procurement of substitute goods or services; loss of use, data, or profits; or business interruption) however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use of this software, even if advised of the possibility of such damage.
+</div>
+
+## Acknowledgement
 The training process is based on code released in the [DANet](https://github.com/xuehaolan/DANet) repository.
 
 The code for the methods that are used for comparison with L-CAM-Fm and L-CAM-Img is taken from the [ScoreCAM](https://github.com/yiskw713/ScoreCAM/blob/master/cam.py) repository, except for the code for the RISE method, which is taken from the [RISE](https://github.com/eclique/RISE) repository.
 
-If you find our L-CAM code useful, please cite the following paper where our method is reported:
-
-I. Gkartzonika, N. Gkalelis, V. Mezaris, "Learning visual explanations for DCNN-based image classifiers using an attention mechanism", under review.
-
-
+<div align="justify"> This work was supported by the EU Horizon 2020 programme under grant agreements H2020-951911 AI4Media and H2020-832921 MIRROR. </div>
 
