@@ -82,7 +82,7 @@ sh VGG16_AD_IC.sh
 cd scripts
 sh ResNet50_AD_IC.sh
 ~~~
-Before running any of the .sh files, again set the img_dir, snapshot_dir and arch parameters inside the .sh file.
+Before running any of the .sh files, again set the img_dir, snapshot_dir, arch and percentage parameters inside the .sh file.
 
 ## Evaluation of the other methods
 - To evaluate the methods that are used for comparison with L-CAM-Fm and L-CAM-Img, run the commands below to calculate Increase in Confidence (IC) and Average Drop (AD):
@@ -90,11 +90,12 @@ Before running any of the .sh files, again set the img_dir, snapshot_dir and arc
 cd scripts
 sh Inference_OtherMethods.sh 
 ~~~
-Before running  the .sh file, first take the code for Grad-Cam, Grad-Cam++, Score-CAM and RISE from [ScoreCAM](https://github.com/yiskw713/ScoreCAM/blob/master/cam.py) repository and [RISE](https://github.com/eclique/RISE) repository  and save it to */L-CAM/utils/cam.py file. Than select from */L-CAM/Inference_OtherMethod the file with the method that you want to evaluate e.g. For ResNet-50 backbone and RISE method select ResNet50_rise.py from */L-CAM/Inference_OtherMethods folder/ and set it in the Inference_OtherMethods.sh file. Also, set the img_dir parameters inside the .sh file.
+Before running  the .sh file, first take the code for Grad-Cam, Grad-Cam++, Score-CAM and RISE from [ScoreCAM](https://github.com/yiskw713/ScoreCAM/blob/master/cam.py) repository and [RISE](https://github.com/eclique/RISE) repository  and save it to */L-CAM/utils/cam.py file. Than select from */L-CAM/Inference_OtherMethod the file with the method that you want to evaluate e.g. For ResNet-50 backbone and RISE method select ResNet50_rise.py from */L-CAM/Inference_OtherMethods folder/ and set it in the Inference_OtherMethods.sh file. Also, set the img_dir and percentage parameters inside the .sh file.
 For example:
 ~~~
 CUDA_VISIBLE_DEVICES=0 python ResNet_rise.py \
 --img_dir='/ssd/imagenet-1k/ILSVRC2012_img_val' \
+--percentage=0.5 \
 ~~~
 
 ## Parameters
@@ -113,14 +114,17 @@ Parameter name | Description | Type |Default Value
 `--lr` | The initial learning rate. | float| LR |
 `--epoch` | Number of epochs used in training process. | int| EPOCH |
 `--snapshot_dir` | Directory where the trained models are stored. | str| Snapshot_dir |
+`--percentage` | Percentage of saliency's muted pixels. | float| percent |
 
 The above parameters can be changed in the .sh files. For example:
 ~~~
-CUDA_VISIBLE_DEVICES=0 python Evaluation_L_CAM_VGG16.py \
---arch=VGG16_L_CAM_Fm \
---img_dir='/ssd/imagenet-1k/ILSVRC2012_img_val' \
+CUDA_VISIBLE_DEVICES=0 python Evaluation_L_CAM_ResNet50.py \
+	--img_dir='/m2/ILSVRC2012_img_val' \
+	--snapshot_dir='/m2/gkartzoni/L-CAM/snapshots/ResNet50_L_CAM_Img' \
+	--arch='ResNet50_L_CAM_Img' \
+	--percentage=0 \
 ~~~
-We use relative paths for train_list and test_list so they are specified relative to the project path (/L-CAM) in the .py files. The paths that must be specified externally are arch(from */L-CAM/models folder), snapshot_dir and img_dir, as in the example.
+We use relative paths for train_list and test_list so they are specified relative to the project path (/L-CAM) in the .py files. The paths that must be specified externally are arch(from */L-CAM/models folder), snapshot_dir, img_dir and percentage, as in the example.
 
 ## Citation
 <div align="justify">
