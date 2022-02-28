@@ -12,8 +12,9 @@ First the name of the backbone (ResNet50 or VGG-16) and then the method's name (
 
 ## Basic Code requirements
 - PyTorch
-- cv2
+- opencv-python
 - scikit-learn
+- tqdm
 
 ## Visual examples and comparison of results 
 ![alt text](https://github.com/bmezaris/L-CAM/blob/main/images/superimposed.png)
