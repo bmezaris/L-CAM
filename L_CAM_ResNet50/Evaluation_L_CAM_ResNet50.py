@@ -17,6 +17,7 @@ from utils.LoadData import data_loader
 from utils.Restore import restore
 from models import ResNet50_L_CAM_Img, ResNet50_L_CAM_Fm, ResNet50_L_CAM_ImgA, ResNet50_L_CAM_FmA
 
+
 #Paths
 os.chdir('../')
 ROOT_DIR = os.getcwd()
