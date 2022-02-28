@@ -30,7 +30,7 @@ test_list = os.path.join(ROOT_DIR,'datalist','ILSVRC', 'Evaluation_2000.txt')
 Snapshot_dir = os.path.join(ROOT_DIR,'snapshots', 'ResNet50_L_CAM_ImgA')
 
 # Default parameters
-EPOCH = 14
+EPOCH = 26
 Batch_size = 64
 disp_interval = 40
 num_workers = 1

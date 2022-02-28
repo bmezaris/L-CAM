@@ -30,7 +30,7 @@ test_list = os.path.join(ROOT_DIR,'datalist','ILSVRC', 'Evaluation_2000.txt')
 Snapshot_dir = os.path.join(ROOT_DIR,'snapshots', 'ResNet50_L_CAM_Fm')
 
 # Default parameters
-EPOCH = 11
+EPOCH = 26
 Batch_size = 64
 disp_interval = 40
 num_workers = 1
@@ -51,7 +51,7 @@ def get_arguments():
     parser.add_argument("--crop_size", type=int, default=224)
     parser.add_argument("--dataset", type=str, default=dataset)
     parser.add_argument("--num_classes", type=int, default=num_classes)
-    parser.add_argument("--arch", type=str,default='ResNet50_L_CAM_Img')
+    parser.add_argument("--arch", type=str,default='ResNet50_L_CAM_Fm')
     parser.add_argument("--lr", type=float, default=LR)
     parser.add_argument("--decay_points", type=str, default='none')
     parser.add_argument("--epoch", type=int, default=EPOCH)

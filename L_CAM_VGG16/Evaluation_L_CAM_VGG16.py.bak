@@ -28,7 +28,7 @@ IMG_DIR  = r'/m2/ILSVRC2012_img_val'
 # Static paths
 train_list = os.path.join(ROOT_DIR,'datalist', 'ILSVRC', 'VGG16_train.txt')
 test_list = os.path.join(ROOT_DIR,'datalist','ILSVRC', 'Evaluation_2000.txt')
-Snapshot_dir = os.path.join(ROOT_DIR,'snapshots', 'VGG16_L_CAM_Img')
+Snapshot_dir = os.path.join(ROOT_DIR,'snapshots', 'VGG16_7x7_L_CAM_Img')
 
 percent = 0
 def get_arguments():
@@ -42,7 +42,7 @@ def get_arguments():
     parser.add_argument("--crop_size", type=int, default=224)
     parser.add_argument("--dataset", type=str, default='imagenet')
     parser.add_argument("--num_classes", type=int, default=1000)
-    parser.add_argument("--arch", type=str,default='VGG16_L_CAM_Img')
+    parser.add_argument("--arch", type=str,default='VGG16_7x7_L_CAM_Img')
     parser.add_argument("--lr", type=float, default=0.0001)
     parser.add_argument("--num_workers", type=int, default=0)
     parser.add_argument("--disp_interval", type=int, default=40)
