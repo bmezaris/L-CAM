@@ -10,7 +10,7 @@ First the name of the backbone (ResNet50 or VGG-16) and then the method's name (
 - The ImageNet1K dataset images should be downloaded by the user manually.
 - This project is implemented and tested in python 3.6 and PyTorch 1.9.
 
-## Visual examples (and comparison) of results 
+## Visual examples and comparison of results 
 ![alt text](https://github.com/bmezaris/L-CAM/blob/main/images/superimposed.png)
 
 ## Data preparation
