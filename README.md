@@ -137,17 +137,17 @@ We use relative paths for train_list and test_list so they are specified relativ
     
 If you find our work, code or pretrained models, useful in your work, please cite the following publication:
 
-I. Gkartzonika, N. Gkalelis, V. Mezaris, "Learning visual explanations for DCNN-based image classifiers using an attention mechanism", 2022, under review.
+I. Gkartzonika, N. Gkalelis, V. Mezaris, "Learning visual explanations for DCNN-based image classifiers using an attention mechanism", Proc. ECCV 2022 Workshop on Vision with Biased or Scarce Data (VBSD), Oct. 2022. Pre-print: https://arxiv.org/abs/2209.11189  Slides: https://www.slideshare.net/VasileiosMezaris/learning-visual-explanations-for-dcnnbased-image-classifiers-using-an-attention-mechanism
 </div>
 
 BibTeX:
 
 ```
-@INPROCEEDINGS{9666088,
+@INPROCEEDINGS{Gkartzonika2022,
     author    = {Gkartzonika, Ioanna and Gkalelis, Nikolaos and Mezaris, Vasileios},
     title     = {Learning visual explanations for DCNN-based image classifiers using an attention mechanism},
-    booktitle = {under review},
-    month     = {},
+    booktitle = {Proc. ECCV 2022 Workshop on Vision with Biased or Scarce Data (VBSD)},
+    month     = {Oct.},
     year      = {2022},
     pages     = {}
 }
