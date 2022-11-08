@@ -169,5 +169,5 @@ The training process is based on code released in the [DANet](https://github.com
 
 The code for the methods that are used for comparison with L-CAM-Fm and L-CAM-Img is taken from the [ScoreCAM](https://github.com/yiskw713/ScoreCAM/blob/master/cam.py) repository, except for the code for the RISE method, which is taken from the [RISE](https://github.com/eclique/RISE) repository.
 
-<div align="justify"> This work was supported by the EU Horizon 2020 programme under grant agreements H2020-951911 AI4Media and H2020-832921 MIRROR. </div>
+<div align="justify"> This work was supported by the EU Horizon 2020 programme under grant agreements H2020-101021866 CRiTERIA and H2020-951911 AI4Media. </div>
 
